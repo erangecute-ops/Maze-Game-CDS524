@@ -1,1 +1,25 @@
 # Maze-Game-CDS524
+
+Project Overview
+This project implements a maze-solving game where an AI agent learns to navigate through a maze to find a target using the Q-learning reinforcement learning algorithm. The agent starts with no knowledge and learns optimal paths through trial and error, receiving rewards for good actions and penalties for bad ones. The game features random maze generation, an interactive GUI with real-time visualization of learning progress, adjustable speed controls, and comprehensive statistics tracking including success rate, Q-table size, and exploration rate. Key learning concepts demonstrated include state representation, action space, reward function design, and the exploration-exploitation trade-off managed through epsilon-greedy strategy.
+
+Quick Start Guide
+To run the game, ensure you have Python 3.7 or higher installed, then clone the repository and install dependencies using pip install -r requirements.txt which includes pygame==2.5.2 and numpy==1.24.3. Run the game with python maze_qlearning.py. The interface displays a 4x4 grid with the agent as a blue square, target as red square, walls as black squares, and visited paths as light blue. Click the TRAIN button to start automatic training, use FASTER/SLOWER buttons to adjust speed (50-300ms per step), and TEST to watch the trained agent perform. Keyboard controls include SPACEBAR for manual stepping when paused and ESC to exit.
+
+Game Design
+The game takes place on a 4×4 grid with randomly generated walls (10% density). The state space includes the agent's current position (x,y coordinates), target direction (dx, dy vector), and Manhattan distance to the target. The action space consists of four discrete movements: UP, DOWN, LEFT, and RIGHT. The reward function provides +150 for reaching the target, -15 for hitting walls, -1 per step to encourage efficiency, -3 for revisiting cells to prevent loops, and shaping rewards of +3 for moving toward the target and -2 for moving away to accelerate learning.
+
+Q-learning Implementation
+The Q-learning algorithm uses a dictionary-based Q-table storing action values for each encountered state. The update formula follows Q(s,a) = Q(s,a) + α[r + γ max Q(s',a') - Q(s,a)] with learning rate α=0.15 and discount factor γ=0.95. Epsilon-greedy exploration starts at ε=0.7 and decays by 0.995 per episode to a minimum of 0.05, ensuring sufficient exploration early while gradually shifting to exploitation of learned knowledge.
+
+Learning Progress and Results
+Training for approximately 500 episodes shows clear learning progression: 0-50 episodes (0-20% success) involve random exploration with frequent wall hits; 50-150 episodes (20-50% success) show the agent beginning to avoid walls and occasionally find the target; 150-300 episodes (50-75% success) demonstrate consistent target finding with improving path efficiency; and 300-500 episodes (75-90% success) achieve near-optimal paths with rare failures. The Q-table grows from 0 to approximately 180 states, representing the most relevant configurations encountered. Comparative testing reveals that shaping rewards accelerate learning by a factor of 3-4, reaching 50% success in 95 episodes versus 340 episodes without shaping.
+
+Technical Implementation
+The code is organized into two main classes: QLearningMaze handling the game logic, state representation, action execution, reward calculation, and Q-table updates; and MazeGUI managing the Pygame-based interface, button interactions, statistics display, and speed control. Key optimizations include adjustable step delay (default 120ms), configurable steps per frame (default 2), and frame rate limiting to 15 fps for responsive UI. The implementation includes comprehensive error handling, real-time statistics updates, and visual progress bars showing success rate milestones at 25%, 50%, and 75%.
+
+Project Structure
+The complete submission includes maze_qlearning.py as the main program file, requirements.txt listing dependencies, README.md as this documentation, report.pdf containing a 1400-word academic analysis, and demo_video_link.txt with the YouTube demonstration link. The report covers introduction, game design, algorithm details, experimental results with learning curves and parameter sensitivity analysis, challenges encountered and solutions implemented, and references to Sutton & Barto's Reinforcement Learning textbook and Watkins' Q-learning paper.
+
+Assignment Details
+This project was completed for CDS524 Reinforcement Learning, submitted on March 3, 2026. It fulfills all requirements including clear game objective and rules, well-defined state and action spaces, correctly implemented reward function, proper Q-learning algorithm with epsilon-greedy exploration, interactive GUI displaying current state and actions, comprehensive documentation, and video presentation. The code, documentation, and demonstration are available in the GitHub repository and have been submitted to Moodle with appropriate sharing permissions for instructor and TA access.
