@@ -1,0 +1,59 @@
+# CDS524 Assignment 1 - Q-learning Maze Game
+# Required Python Packages
+
+# Pygame - For game graphics and user interface
+# Version 2.5.2 provides stable GUI functionality with support for:
+# - Window management and event handling
+# - Shape drawing and color rendering
+# - Font rendering for text display
+# - Frame rate control
+pygame==2.5.2
+
+# NumPy - For numerical operations and array handling
+# Version 1.24.3 provides efficient matrix operations for:
+# - Maze generation and storage
+# - Statistical calculations (averages, success rates)
+# - Random number generation for exploration
+# - Array manipulation for grid management
+numpy==1.24.3
+
+# Matplotlib - For generating learning curves and data visualization
+# Version 3.7.1 is optional but recommended for:
+# - Creating professional graphs for the report
+# - Visualizing learning progress over time
+# - Plotting success rate trends
+# - Generating comparative analysis charts
+matplotlib==3.7.1
+
+# Installation Instructions:
+# -------------------------
+# To install all required packages, run:
+# pip install -r requirements.txt
+#
+# For individual package installation:
+# pip install pygame==2.5.2
+# pip install numpy==1.24.3
+# pip install matplotlib==3.7.1
+#
+# For users with pip3:
+# pip3 install -r requirements.txt
+#
+# For virtual environment (recommended):
+# python -m venv venv
+# source venv/bin/activate  (Mac/Linux)
+# venv\Scripts\activate     (Windows)
+# pip install -r requirements.txt
+
+# Package Versions Tested:
+# ------------------------
+# Python: 3.7, 3.8, 3.9, 3.10, 3.11
+# pygame: 2.5.2 (compatible with all Python versions above)
+# numpy: 1.24.3 (compatible with Python 3.7-3.11)
+# matplotlib: 3.7.1 (compatible with Python 3.7-3.11)
+
+# Notes:
+# ------
+# - matplotlib is optional and only needed if generating graphs
+# - The game will run with just pygame and numpy installed
+# - All packages are open-source and freely available
+# - No additional system dependencies required
